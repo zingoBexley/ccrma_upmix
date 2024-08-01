@@ -251,7 +251,7 @@ class Demucs(nn.Module):
                  # Weight init
                  rescale=0.1,
                  # Metadata
-                 samplerate=44100,
+                 samplerate=48000,
                  segment=4 * 10):
         """
         Args:

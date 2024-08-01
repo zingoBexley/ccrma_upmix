@@ -34,12 +34,13 @@ from demucs.wav import build_metadata, Wavset, _get_musdb_valid
 
 
 MUSDB_PATH = '/checkpoint/defossez/datasets/musdbhq'
-EXTRA_WAV_PATH = "/checkpoint/defossez/datasets/allstems_44"
+# EXTRA_WAV_PATH = "/checkpoint/defossez/datasets/allstems_44"
+EXTRA_WAV_PATH = '/Users/fzs/Documents/projects/CCRMA_upmixer/merged_dataset' # FZS
 # WARNING: OUTPATH will be completely erased.
 OUTPATH = Path.home() / 'tmp/demucs_mdx/automix_musdb/'
 CACHE = Path.home() / 'tmp/automix_cache'  # cache BPM and pitch information.
 CHANNELS = 2
-SR = 44100
+SR = 48000 # FZS
 MAX_PITCH = 3  # maximum allowable pitch shift in semi tones
 MAX_TEMPO = 0.15  # maximum allowable tempo shift
 

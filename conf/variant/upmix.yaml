@@ -1,0 +1,8 @@
+# @package _global_
+
+dset:
+  use_musdb: false   # set to false to not use musdb as training data. FZS
+  wav: /Users/fzs/Documents/projects/CCRMA_upmixer/merged_dataset # path to custom wav dataset # FZS 
+  samplerate: 48000
+  # sources: ['drums', 'bass', 'other', 'vocals']
+  sources: ['L', 'R', 'C', 'Ls', 'Rs'] # FZS
