@@ -9,4 +9,13 @@ dset:
   sources: ['L', 'R', 'C', 'Ls', 'Rs'] # FZS
 
 epochs: 100
-batch_size: 64
+batch_size: 32
+
+augment:
+  repitch:
+    proba: 0
+  remix:
+    proba: 0
+  scale:
+    proba: 0
+  flip: false
