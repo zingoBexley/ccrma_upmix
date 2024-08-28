@@ -1,15 +1,17 @@
 # @package _global_
 
 dset:
+  musdb: /user/b/bsteers/ccrma_upmix_fzs/mini_dataset # FZS
   use_musdb: false   # set to false to not use musdb as training data. FZS
-  # wav: /Users/fzs/Documents/projects/CCRMA_upmixer/merged_dataset # path to custom wav dataset # FZS 
-  wav: /user/b/bsteers/ccrma_upmix_fzs/merged_dataset # path to custom wav dataset # FZS 
+  wav: /user/b/bsteers/ccrma_upmix_fzs/mini_dataset # path to custom wav dataset  FZS 
   samplerate: 48000
   # sources: ['drums', 'bass', 'other', 'vocals']
   sources: ['L', 'R', 'C', 'Ls', 'Rs'] # FZS
 
-epochs: 100
-batch_size: 32
+epochs: 300
+batch_size: 4
+
+weights: [1., 1., 1., 1., 1.]  # FZS  weights over each source for the training/valid loss.
 
 augment:
   repitch:
@@ -19,3 +21,6 @@ augment:
   scale:
     proba: 0
   flip: false
+
+test:
+  nonhq: /user/b/bsteers/ccrma_upmix_fzs/mini_dataset  # FZS path to non hq MusDB for evaluation

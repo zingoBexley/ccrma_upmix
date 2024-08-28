@@ -1,4 +1,6 @@
-# Demucs Music Source Separation
+# Demucs Music Source Separation - Repurposed for 2->5 Upmixing
+
+DESCRIBE UPMIX CHANGES HERE
 
 [![Support Ukraine](https://img.shields.io/badge/Support-Ukraine-FFD500?style=flat&labelColor=005BBB)](https://opensource.fb.com/support-ukraine)
 ![tests badge](https://github.com/facebookresearch/demucs/workflows/tests/badge.svg)

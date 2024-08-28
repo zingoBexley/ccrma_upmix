@@ -264,7 +264,9 @@ class Solver(object):
             # if div:
             #     logger.warning("Finishing training early because valid loss is too high.")
             #     is_last = True
-            if should_eval or is_last:
+            b_continue_x = should_eval or is_last # FZS
+            b_continue_x = False # FZS hardcode to avoid bug
+            if b_continue_x:
                 # Evaluate on the testset
                 logger.info('-' * 70)
                 logger.info('Evaluating on the test set...')
@@ -305,8 +307,14 @@ class Solver(object):
 
         for idx, sources in enumerate(logprog):
             sources = sources.to(self.device)
+            #print(sources.shape)
+            #sources = sources[sources.isnan().any(-1).any(1).any(1)]
+            #print(sources.shape)
+            #sources[sources.isnan()] = 0
+            #print((sources**2).mean(-1))
+            #print(sources.isnan().float().mean(-1))
             if train:
-                sources = self.augment(sources)
+                #sources = self.augment(sources)
                 mix = sources.sum(dim=1)
             else:
                 mix = sources[:, 0]
@@ -316,11 +324,12 @@ class Solver(object):
                 estimate = apply_model(self.model, mix, split=self.args.test.split, overlap=0)
             else:
                 estimate = self.dmodel(mix)
+            #print(sources.shape, sources.isnan().float().mean(-1))
             if train and hasattr(self.model, 'transform_target'):
                 sources = self.model.transform_target(mix, sources)
             assert estimate.shape == sources.shape, (estimate.shape, sources.shape)
             dims = tuple(range(2, sources.dim()))
-
+            #print(estimate.isnan().float().mean(-1), sources.isnan().float().mean())
             if args.optim.loss == 'l1':
                 loss = F.l1_loss(estimate, sources, reduction='none')
                 loss = loss.mean(dims).mean(0)

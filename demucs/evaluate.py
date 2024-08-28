@@ -84,7 +84,7 @@ def evaluate(solver, compute_sdr=False):
     else:
         test_set = musdb.DB(args.test.nonhq, subsets=["test"], is_wav=False)
     src_rate = args.dset.musdb_samplerate
-
+    # print(test_set,src_rate)
     eval_device = 'cpu'
 
     model = solver.model
